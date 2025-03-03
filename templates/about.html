@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}About - {{ config.title }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1 class="text-center mb-4">{{ page.title }}</h1>
+            
+            <div class="content">
+                {{ page.content | safe }}
+            </div>
+
+            {% if page.extra.authors %}
+            <div class="authors mt-5">
+                <h2>Authors</h2>
+                <div class="row">
+                    {% for author in page.extra.authors %}
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ author.name }}</h5>
+                                {% if author.bio %}
+                                <p class="card-text">{{ author.bio }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

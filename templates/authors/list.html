@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Authors - {{ config.title }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1 class="text-center mb-4">Our Authors</h1>
+            
+            {% if section.content %}
+            <div class="content mb-5">
+                {{ section.content | safe }}
+            </div>
+            {% endif %}
+
+            <div class="row">
+                {% for author in section.pages %}
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="{{ author.permalink }}" class="text-decoration-none">{{ author.title }}</a>
+                            </h5>
+                            {% if author.description %}
+                            <p class="card-text">{{ author.description }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

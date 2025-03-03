@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} - {{ config.title }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1 class="text-center mb-4">{{ page.title }}</h1>
+            
+            <div class="content">
+                {{ page.content | safe }}
+            </div>
+
+            {% if page.extra.social %}
+            <div class="social-links mt-4">
+                <h3>Connect</h3>
+                <ul class="list-unstyled">
+                    {% for platform, url in page.extra.social %}
+                    <li><a href="{{ url }}" target="_blank" rel="noopener">{{ platform }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            {% if page.extra.articles %}
+            <div class="articles mt-5">
+                <h3>Articles</h3>
+                <ul class="list-unstyled">
+                    {% for article in page.extra.articles %}
+                    <li class="mb-3">
+                        <a href="{{ article.url }}">{{ article.title }}</a>
+                        {% if article.description %}
+                        <p class="text-muted mb-0">{{ article.description }}</p>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %} 

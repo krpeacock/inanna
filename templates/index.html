@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome to the Church of Inanna{% endblock %}
+
+{% block extra_head %}
+<style>
+    .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/images/temple-background.jpg');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 8rem 0;
+        text-align: center;
+    }
+    
+    .hero h1 {
+        font-family: 'Cinzel', serif;
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .feature-box {
+        padding: 2rem;
+        text-align: center;
+        transition: transform 0.3s;
+    }
+    
+    .feature-box:hover {
+        transform: translateY(-10px);
+    }
+    
+    .symbol-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: #c17f59;
+    }
+    
+    .section-title {
+        font-family: 'Cinzel', serif;
+        color: #2c1810;
+        margin-bottom: 2rem;
+    }
+    
+    .quote-section {
+        background-color: #f8f5f2;
+        padding: 4rem 0;
+    }
+    
+    .quote-text {
+        font-style: italic;
+        font-size: 1.5rem;
+        color: #2c1810;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <h1>Welcome to the Temple of Inanna</h1>
+        <p class="lead mb-4">Discover the ancient wisdom and divine power of the Queen of Heaven and Earth</p>
+        <a href="{{ get_url(path='about') }}" class="btn btn-lg btn-outline-light">Begin Your Journey</a>
+    </div>
+</section>
+
+<section class="container py-5">
+    <h2 class="text-center section-title mb-5">The Divine Aspects</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="feature-box">
+                <div class="symbol-icon">⭐</div>
+                <h3>Love & Beauty</h3>
+                <p>Embrace the power of divine love and the celebration of beauty in all its forms.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-box">
+                <div class="symbol-icon">⚔️</div>
+                <h3>Power & Justice</h3>
+                <p>Stand strong with the warrior goddess who fights for truth and justice.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-box">
+                <div class="symbol-icon">🌱</div>
+                <h3>Growth & Fertility</h3>
+                <p>Connect with the life-giving force that nurtures growth and abundance.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="quote-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <p class="quote-text mb-3">"From the Great Above she opened her ear to the Great Below."</p>
+                <p class="text-muted">- Descent of Inanna</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container py-5">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <h2 class="section-title">Join Our Community</h2>
+            <p>Connect with fellow devotees and learn about the ancient traditions of Inanna. Our temple provides a space for worship, learning, and spiritual growth.</p>
+            <a href="{{ get_url(path='contact') }}" class="btn btn-dark mt-3">Contact Us</a>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Upcoming Events</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <strong>Full Moon Ceremony</strong><br>
+                            Celebrate the divine feminine energy
+                        </li>
+                        <li class="mb-3">
+                            <strong>Sacred Teachings</strong><br>
+                            Weekly study of ancient texts
+                        </li>
+                        <li>
+                            <strong>Temple Meditation</strong><br>
+                            Daily guided spiritual practice
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 
