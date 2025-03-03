@@ -32,13 +32,13 @@ jobs:
         env:
           IC_DEPLOY_KEY: ${{ secrets.IC_DEPLOY_KEY }}
         run: |
-          mkdir -p ./tmp/identity/default
-          echo "$IC_DEPLOY_KEY" > ./tmp/identity/default/identity.pem
-          dfx identity import default ./tmp/identity/default/identity.pem
+          mkdir -p ./tmp/identity/ci
+          echo "$IC_DEPLOY_KEY" > ./tmp/identity/ci/identity.pem
+          dfx identity import ci ./tmp/identity/ci/identity.pem
 
       - name: Initialize dfx
         run: |
-          dfx identity use default
+          dfx identity use ci
 
       - name: Deploy to IC
         run: |
