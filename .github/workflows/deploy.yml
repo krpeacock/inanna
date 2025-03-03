@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 env:
-  DFX_VERSION: 0.15.1
+  DFX_VERSION: 0.15.3
 
 jobs:
   deploy:
@@ -18,16 +18,15 @@ jobs:
 
       - name: Install Zola
         run: |
-          wget -q -O - "https://github.com/getzola/zola/releases/download/v0.17.2/zola-v0.17.2-x86_64-unknown-linux-gnu.tar.gz" | tar xzf - -C /usr/local/bin
+          sudo snap install --edge zola
 
       - name: Build site
         run: zola build
 
       - name: Install dfx
-        run: |
-          echo "Installing DFX version $DFX_VERSION..."
-          sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
-          echo "$HOME/bin" >> $GITHUB_PATH
+        uses: dfinity/setup-dfx@main
+        with:
+          dfx-version: "${{ env.DFX_VERSION }}"
 
       - name: Configure dfx identity
         env:
