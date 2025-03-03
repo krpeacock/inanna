@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 env:
-  DFX_VERSION: 0.15.3
+  DFX_VERSION: 0.24.0
 
 jobs:
   deploy:
