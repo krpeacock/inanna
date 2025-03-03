@@ -1,0 +1,15 @@
+{
+  "canisters": {
+    "website": {
+      "type": "assets",
+      "source": ["public"]
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "version": 1
+}

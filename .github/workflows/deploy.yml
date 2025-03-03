@@ -1,0 +1,46 @@
+name: Deploy to Internet Computer
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  DFX_VERSION: 0.15.1
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Zola
+        run: |
+          wget -q -O - "https://github.com/getzola/zola/releases/download/v0.17.2/zola-v0.17.2-x86_64-unknown-linux-gnu.tar.gz" | tar xzf - -C /usr/local/bin
+
+      - name: Build site
+        run: zola build
+
+      - name: Install dfx
+        run: |
+          echo "Installing DFX version $DFX_VERSION..."
+          sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+          echo "$HOME/bin" >> $GITHUB_PATH
+
+      - name: Configure dfx identity
+        env:
+          IC_DEPLOY_KEY: ${{ secrets.IC_DEPLOY_KEY }}
+        run: |
+          mkdir -p ./tmp/identity/default
+          echo "$IC_DEPLOY_KEY" > ./tmp/identity/default/identity.pem
+          dfx identity import ./tmp/identity/default/identity.pem
+
+      - name: Initialize dfx
+        run: |
+          dfx identity use default
+
+      - name: Deploy to IC
+        run: |
+          dfx deploy --network ic 
