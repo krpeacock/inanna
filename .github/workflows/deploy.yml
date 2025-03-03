@@ -34,7 +34,7 @@ jobs:
         run: |
           mkdir -p ./tmp/identity/ci
           echo "$IC_DEPLOY_KEY" > ./tmp/identity/ci/identity.pem
-          dfx identity import ci ./tmp/identity/ci/identity.pem
+          dfx identity import ci ./tmp/identity/ci/identity.pem --storage-mode=plaintext
 
       - name: Initialize dfx
         run: |
