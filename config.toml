@@ -12,23 +12,12 @@ build_search_index = true
 # Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
 highlight_code = true
 
-# These taxonomies go in the main section
+# Define the taxonomies
 taxonomies = [
-    { name = "tags", feed = true},
-    { name = "articles", feed = true},
-    { name = "authors", feed = true},
+    {name = "doctrines"},
+    {name = "authors"}
 ]
 
-
-[search]
-taxonomies = [
-    { name = "tags", feed = true},
-    { name = "articles", feed = true},
-    { name = "authors", feed = true},
-]
 [extra]
-taxonomies = [
-    { name = "tags", feed = true},
-    { name = "articles", feed = true},
-    { name = "authors", feed = true},
-]
+# Additional site configuration
+theme = "zolastrap"

@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+{% block title %}Events - {{ config.title }}{% endblock %}
+
+{% block extra_head %}
+<style>
+.calendar {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.calendar-header {
+    background: #2c1810;
+    color: white;
+    padding: 1rem;
+    border-radius: 8px 8px 0 0;
+    text-align: center;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background: #eee;
+    padding: 1px;
+}
+
+.calendar-day {
+    background: white;
+    min-height: 100px;
+    padding: 0.5rem;
+    position: relative;
+}
+
+.calendar-day-header {
+    font-weight: bold;
+    text-align: center;
+    padding: 0.5rem;
+    background: #f8f5f2;
+}
+
+.calendar-date {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.calendar-event {
+    background: #c17f59;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.calendar-event:hover {
+    background: #2c1810;
+}
+
+.calendar-day.inactive {
+    background: #f8f8f8;
+    color: #ccc;
+}
+
+.upcoming-events {
+    margin-top: 2rem;
+}
+
+.event-card {
+    border-left: 4px solid #c17f59;
+    margin-bottom: 1rem;
+    transition: transform 0.3s;
+}
+
+.event-card:hover {
+    transform: translateX(5px);
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="text-center mb-4">{{ section.title }}</h1>
+    
+    {% if section.content %}
+    <div class="content mb-5">
+        {{ section.content | safe }}
+    </div>
+    {% endif %}
+
+    <div class="calendar">
+        <div class="calendar-header">
+            <h2 class="mb-0">March 2025</h2>
+        </div>
+        <div class="calendar-grid">
+            <!-- Day headers -->
+            <div class="calendar-day-header">Sun</div>
+            <div class="calendar-day-header">Mon</div>
+            <div class="calendar-day-header">Tue</div>
+            <div class="calendar-day-header">Wed</div>
+            <div class="calendar-day-header">Thu</div>
+            <div class="calendar-day-header">Fri</div>
+            <div class="calendar-day-header">Sat</div>
+
+            <!-- Calendar days -->
+            {% for i in range(end=35) %}
+            {% set day = i - 5 %}  {# March 2025 starts on a Saturday #}
+            <div class="calendar-day {% if day <= 0 or day > 31 %}inactive{% endif %}">
+                {% if day > 0 and day <= 31 %}
+                <div class="calendar-date">{{ day }}</div>
+                {% for page in section.pages %}
+                    {% if page.extra.event_date %}
+                        {% set date_prefix = "2025-03-" %}
+                        {% if day < 10 %}
+                            {% set date_prefix = date_prefix ~ "0" %}
+                        {% endif %}
+                        {% set date_prefix = date_prefix ~ day %}
+                        {% if page.extra.event_date is containing(date_prefix) %}
+                            <a href="{{ page.permalink }}" class="calendar-event text-decoration-none">
+                                {{ page.title | truncate(length=30) }}
+                                <small class="d-block mt-1">{{ page.extra.event_start_time }}</small>
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="upcoming-events">
+        <h2 class="mb-4">Upcoming Events</h2>
+        <div class="row">
+            {% for page in section.pages %}
+            <div class="col-md-6 mb-4">
+                <div class="card event-card">
+                    <div class="card-body">
+                        <h3 class="card-title h5">
+                            <a href="{{ page.permalink }}" class="text-decoration-none">{{ page.title }}</a>
+                        </h3>
+                        {% if page.extra.event_date %}
+                        <p class="card-text text-muted mb-2">
+                            {{ page.extra.event_date | date(format="%B %d, %Y") }} at 
+                            {{ page.extra.event_start_time | replace(from=":", to=":") }} - 
+                            {{ page.extra.event_end_time | replace(from=":", to=":") }}
+                        </p>
+                        {% endif %}
+                        {% if page.description %}
+                        <p class="card-text">{{ page.description }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %} 

@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} - {{ config.title }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <article class="event-detail">
+                <header class="mb-4">
+                    <h1>{{ page.title }}</h1>
+                    {% if page.extra.event_date %}
+                    <div class="event-meta">
+                        <p class="text-muted mb-2">
+                            <strong>Date:</strong> {{ page.extra.event_date | date(format="%B %d, %Y") }}<br>
+                            <strong>Time:</strong> {{ page.extra.event_start_time }} - {{ page.extra.event_end_time }}<br>
+                            <strong>Location:</strong> {{ page.extra.location }}
+                        </p>
+                        {% set event_start = page.extra.event_date ~ "T" ~ page.extra.event_start_time ~ ":00" %}
+                        {% set event_end = page.extra.event_date ~ "T" ~ page.extra.event_end_time ~ ":00" %}
+                        {% set event_start_clean = event_start | replace(from="-", to="") | replace(from=":", to="") %}
+                        {% set event_end_clean = event_end | replace(from="-", to="") | replace(from=":", to="") %}
+                        {% set title_encoded = page.title | urlencode %}
+                        {% set desc_encoded = page.description | urlencode %}
+                        {% set location_encoded = page.extra.location | urlencode %}
+                        {% set calendar_url = "data:text/calendar;charset=utf8," ~ 
+                            "BEGIN:VCALENDAR%0A" ~
+                            "VERSION:2.0%0A" ~
+                            "BEGIN:VEVENT%0A" ~
+                            "URL:" ~ page.permalink ~ "%0A" ~
+                            "DTSTART:" ~ event_start_clean ~ "%0A" ~
+                            "DTEND:" ~ event_end_clean ~ "%0A" ~
+                            "SUMMARY:" ~ title_encoded ~ "%0A" ~
+                            "DESCRIPTION:" ~ desc_encoded ~ "%0A" ~
+                            "LOCATION:" ~ location_encoded ~ "%0A" ~
+                            "END:VEVENT%0A" ~
+                            "END:VCALENDAR" 
+                        %}
+                        <a href="{{ calendar_url }}" class="btn btn-outline-dark btn-sm" download="event.ics">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-plus me-1" viewBox="0 0 16 16">
+                                <path d="M8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7"/>
+                                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+                            </svg>
+                            Add to Calendar
+                        </a>
+                    </div>
+                    {% endif %}
+                </header>
+
+                <div class="content">
+                    {{ page.content | safe }}
+                </div>
+
+                {% if page.extra.registration_required %}
+                <div class="registration-box mt-5 p-4 bg-light rounded">
+                    <h3>Registration</h3>
+                    <p>Registration is required for this event.</p>
+                    <div class="d-flex gap-2">
+                        <a href="{{ page.extra.registration_link }}" class="btn btn-dark">Register Now</a>
+                        <a href="{{ calendar_url }}" class="btn btn-outline-dark" download="event.ics">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-plus me-1" viewBox="0 0 16 16">
+                                <path d="M8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7"/>
+                                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+                            </svg>
+                            Add to Calendar
+                        </a>
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="event-navigation mt-5 pt-3 border-top">
+                    <a href="{{ get_url(path='events') }}" class="btn btn-outline-dark">
+                        ← Back to Events Calendar
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+{% endblock %} 
