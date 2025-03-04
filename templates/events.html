@@ -124,7 +124,11 @@
                         {% set date_prefix = date_prefix ~ day %}
                         {% if page.extra.event_date is containing(date_prefix) %}
                             <a href="{{ page.permalink }}" class="calendar-event text-decoration-none">
-                                {{ page.title | truncate(length=30) }}
+                                {% if page.title | length > 25 %}
+                                    {{ page.title | truncate(length=25) }}
+                                {% else %}
+                                    {{ page.title }}
+                                {% endif %}
                                 <small class="d-block mt-1">{{ page.extra.event_start_time }}</small>
                             </a>
                         {% endif %}
