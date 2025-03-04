@@ -51,15 +51,97 @@
         font-size: 1.5rem;
         color: #2c1810;
     }
+
+    .event-item {
+        display: none;
+    }
+
+    .event-item.visible {
+        display: block;
+    }
 </style>
 {% endblock %}
 
 {% block content %}
-<section class="hero">
+<div class="hero bg-dark text-light py-5 mb-4">
     <div class="container">
-        <h1>Welcome to the Temple of Inanna</h1>
-        <p class="lead mb-4">Discover the ancient wisdom and divine power of the Queen of Heaven and Earth</p>
-        <a href="{{ get_url(path='about') }}" class="btn btn-lg btn-outline-light">Begin Your Journey</a>
+        <div class="row align-items-center">
+            <div class="col-md-8 mx-auto text-center">
+                <h1 class="display-4">Welcome to the Temple of Inanna</h1>
+                <p class="lead">Dedicated to the worship and teachings of the ancient Mesopotamian goddess of love, war, and fertility</p>
+                <a href="{{ get_url(path='about') }}" class="btn btn-outline-light mt-3">Learn More</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="container py-5">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <h2 class="section-title">Join Our Community</h2>
+            <p>Connect with fellow devotees and learn about the ancient traditions of Inanna. Our temple provides a space for worship, learning, and spiritual growth.</p>
+            <a href="{{ get_url(path='contact') }}" class="btn btn-dark mt-3">Contact Us</a>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Upcoming Events</h3>
+                    {% set events_section = get_section(path="events/_index.md") %}
+                    {% if events_section and events_section.pages %}
+                        {% set sorted_events = events_section.pages | sort(attribute="extra.event_date") %}
+                        <ul class="list-unstyled" id="upcoming-events">
+                        {% for event in sorted_events %}
+                            {% if event.extra.event_date %}
+                                <li class="mb-3 event-item" data-date="{{ event.extra.event_date }}">
+                                    <strong><a href="{{ event.permalink }}" class="text-decoration-none">{{ event.title }}</a></strong><br>
+                                    <small class="text-muted">
+                                        {{ event.extra.event_date | date(format="%B %d, %Y") }} at {{ event.extra.event_start_time }}
+                                    </small><br>
+                                    {{ event.description }}
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        </ul>
+                        <p class="text-muted" id="no-events" style="display: none;">No upcoming events scheduled.</p>
+                        <a href="{{ get_url(path='events') }}" class="btn btn-outline-dark btn-sm">View All Events</a>
+                    {% else %}
+                        <p class="text-muted">No upcoming events scheduled.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container py-5">
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h3 class="h5">Sacred Teachings</h3>
+                    <p>Explore the ancient wisdom of Inanna through our collection of sacred texts and interpretations.</p>
+                    <a href="{{ get_url(path='doctrines') }}" class="btn btn-outline-dark btn-sm">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h3 class="h5">Temple Meditation</h3>
+                    <p>Join our daily guided meditation sessions to connect with divine feminine energy.</p>
+                    <a href="{{ get_url(path='events') }}" class="btn btn-outline-dark btn-sm">View Schedule</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h3 class="h5">Community</h3>
+                    <p>Become part of our growing community of devotees and spiritual seekers.</p>
+                    <a href="{{ get_url(path='contact') }}" class="btn btn-outline-dark btn-sm">Join Us</a>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -100,35 +182,29 @@
         </div>
     </div>
 </section>
+{% endblock %}
 
-<section class="container py-5">
-    <div class="row align-items-center">
-        <div class="col-md-6">
-            <h2 class="section-title">Join Our Community</h2>
-            <p>Connect with fellow devotees and learn about the ancient traditions of Inanna. Our temple provides a space for worship, learning, and spiritual growth.</p>
-            <a href="{{ get_url(path='contact') }}" class="btn btn-dark mt-3">Contact Us</a>
-        </div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title">Upcoming Events</h3>
-                    <ul class="list-unstyled">
-                        <li class="mb-3">
-                            <strong>Full Moon Ceremony</strong><br>
-                            Celebrate the divine feminine energy
-                        </li>
-                        <li class="mb-3">
-                            <strong>Sacred Teachings</strong><br>
-                            Weekly study of ancient texts
-                        </li>
-                        <li>
-                            <strong>Temple Meditation</strong><br>
-                            Daily guided spiritual practice
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+{% block extra_scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const eventItems = document.querySelectorAll('.event-item');
+    const noEventsMsg = document.getElementById('no-events');
+    let visibleCount = 0;
+
+    eventItems.forEach(item => {
+        const eventDate = new Date(item.dataset.date);
+        if (eventDate >= today && visibleCount < 3) {
+            item.classList.add('visible');
+            visibleCount++;
+        }
+    });
+
+    if (visibleCount === 0) {
+        noEventsMsg.style.display = 'block';
+    }
+});
+</script>
 {% endblock %} 
