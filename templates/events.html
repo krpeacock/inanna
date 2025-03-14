@@ -17,6 +17,38 @@
     padding: 1rem;
     border-radius: 8px 8px 0 0;
     text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.calendar-nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.calendar-nav-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: opacity 0.3s;
+}
+
+.calendar-nav-btn:hover {
+    opacity: 0.8;
+}
+
+.calendar-nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.calendar-title {
+    margin: 0;
+    min-width: 200px;
 }
 
 .calendar-grid {
@@ -97,9 +129,19 @@
 
     <div class="calendar">
         <div class="calendar-header">
-            <h2 class="mb-0">March 2025</h2>
+            <button class="calendar-nav-btn" id="prevMonth">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                </svg>
+            </button>
+            <h2 class="calendar-title mb-0" id="currentMonth">March 2025</h2>
+            <button class="calendar-nav-btn" id="nextMonth">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+            </button>
         </div>
-        <div class="calendar-grid">
+        <div class="calendar-grid" id="calendarGrid">
             <!-- Day headers -->
             <div class="calendar-day-header">Sun</div>
             <div class="calendar-day-header">Mon</div>
@@ -109,43 +151,16 @@
             <div class="calendar-day-header">Fri</div>
             <div class="calendar-day-header">Sat</div>
 
-            <!-- Calendar days -->
-            {% for i in range(end=35) %}
-            {% set day = i - 5 %}  {# March 2025 starts on a Saturday #}
-            <div class="calendar-day {% if day <= 0 or day > 31 %}inactive{% endif %}">
-                {% if day > 0 and day <= 31 %}
-                <div class="calendar-date">{{ day }}</div>
-                {% for page in section.pages %}
-                    {% if page.extra.event_date %}
-                        {% set date_prefix = "2025-03-" %}
-                        {% if day < 10 %}
-                            {% set date_prefix = date_prefix ~ "0" %}
-                        {% endif %}
-                        {% set date_prefix = date_prefix ~ day %}
-                        {% if page.extra.event_date is containing(date_prefix) %}
-                            <a href="{{ page.permalink }}" class="calendar-event text-decoration-none">
-                                {% if page.title | length > 25 %}
-                                    {{ page.title | truncate(length=25) }}
-                                {% else %}
-                                    {{ page.title }}
-                                {% endif %}
-                                <small class="d-block mt-1">{{ page.extra.event_start_time }}</small>
-                            </a>
-                        {% endif %}
-                    {% endif %}
-                {% endfor %}
-                {% endif %}
-            </div>
-            {% endfor %}
+            <!-- Calendar days will be populated by JavaScript -->
         </div>
     </div>
 
     <div class="upcoming-events">
         <h2 class="mb-4">Upcoming Events</h2>
-        <div class="row">
+        <div class="row" id="events-container">
             {% for page in section.pages %}
-            <div class="col-md-6 mb-4">
-                <div class="card event-card">
+            <div class="col-md-6 mb-4 event-card" data-event-date="{{ page.extra.event_date }}">
+                <div class="card">
                     <div class="card-body">
                         <h3 class="card-title h5">
                             <a href="{{ page.permalink }}" class="text-decoration-none">{{ page.title }}</a>
@@ -165,6 +180,143 @@
             </div>
             {% endfor %}
         </div>
+        <p id="no-upcoming-events" class="text-center" style="display: none;">No upcoming events scheduled at this time.</p>
     </div>
 </div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize current date and viewed month/year
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    let currentMonth = 2; // March (0-based)
+    let currentYear = 2025;
+
+    // Get DOM elements
+    const prevMonthBtn = document.getElementById('prevMonth');
+    const nextMonthBtn = document.getElementById('nextMonth');
+    const currentMonthTitle = document.getElementById('currentMonth');
+    const calendarGrid = document.getElementById('calendarGrid');
+    
+    // Store all events data
+    const events = [];
+    document.querySelectorAll('.event-card').forEach(card => {
+        events.push({
+            date: new Date(card.dataset.eventDate),
+            title: card.querySelector('.card-title a').textContent,
+            time: card.querySelector('.text-muted').textContent.split(' at ')[1].split(' - ')[0],
+            url: card.querySelector('.card-title a').href
+        });
+    });
+
+    // Month names for display
+    const monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+
+    function updateCalendar() {
+        // Update month/year display
+        currentMonthTitle.textContent = `${monthNames[currentMonth]} ${currentYear}`;
+
+        // Clear existing calendar days (except headers)
+        const headers = calendarGrid.querySelectorAll('.calendar-day-header');
+        calendarGrid.innerHTML = '';
+        headers.forEach(header => calendarGrid.appendChild(header));
+
+        // Get first day of month and total days
+        const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+        const lastDay = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+        // Add empty cells for days before first of month
+        for (let i = 0; i < firstDay; i++) {
+            const emptyDay = document.createElement('div');
+            emptyDay.className = 'calendar-day inactive';
+            calendarGrid.appendChild(emptyDay);
+        }
+
+        // Add days of month
+        for (let day = 1; day <= lastDay; day++) {
+            const dayCell = document.createElement('div');
+            dayCell.className = 'calendar-day';
+            
+            // Add date number
+            const dateDiv = document.createElement('div');
+            dateDiv.className = 'calendar-date';
+            dateDiv.textContent = day;
+            dayCell.appendChild(dateDiv);
+
+            // Check for events on this day
+            const currentDate = new Date(currentYear, currentMonth, day);
+            events.forEach(event => {
+                if (event.date.getFullYear() === currentYear &&
+                    event.date.getMonth() === currentMonth &&
+                    event.date.getDate() === day) {
+                    const eventLink = document.createElement('a');
+                    eventLink.href = event.url;
+                    eventLink.className = 'calendar-event text-decoration-none';
+                    eventLink.innerHTML = `
+                        ${event.title.length > 25 ? event.title.substring(0, 25) + '...' : event.title}
+                        <small class="d-block mt-1">${event.time}</small>
+                    `;
+                    dayCell.appendChild(eventLink);
+                }
+            });
+
+            calendarGrid.appendChild(dayCell);
+        }
+
+        // Add empty cells for remaining grid spaces if needed
+        const totalCells = calendarGrid.children.length;
+        const remainingCells = 42 - totalCells; // 6 rows × 7 days = 42 total cells
+        for (let i = 0; i < remainingCells; i++) {
+            const emptyDay = document.createElement('div');
+            emptyDay.className = 'calendar-day inactive';
+            calendarGrid.appendChild(emptyDay);
+        }
+    }
+
+    // Event handlers for navigation buttons
+    prevMonthBtn.addEventListener('click', () => {
+        currentMonth--;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+        }
+        updateCalendar();
+    });
+
+    nextMonthBtn.addEventListener('click', () => {
+        currentMonth++;
+        if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+        }
+        updateCalendar();
+    });
+
+    // Filter upcoming events
+    const eventCards = document.querySelectorAll('.event-card');
+    let hasUpcomingEvents = false;
+
+    eventCards.forEach(card => {
+        const eventDate = new Date(card.dataset.eventDate);
+        if (eventDate < today) {
+            card.style.display = 'none';
+        } else {
+            hasUpcomingEvents = true;
+        }
+    });
+
+    const noEventsMessage = document.getElementById('no-upcoming-events');
+    if (!hasUpcomingEvents) {
+        noEventsMessage.style.display = 'block';
+    }
+
+    // Initialize calendar
+    updateCalendar();
+});
+</script>
 {% endblock %} 
