@@ -11,18 +11,18 @@ registration_required = true
 registration_link = "https://partiful.com/e/x2sADV8NSLXxKtbhALQ6"
 +++
 
-Join us for a sacred ceremony marking Venus's inferior conjunction, when the planet appears to descend into the underworld. This powerful astronomical event mirrors Inanna's descent in the ancient myth, offering us a unique opportunity for deep spiritual transformation.
+Join us for a sacred ceremony marking Venus's inferior conjunction, when the planet appears to descend into the underworld. This powerful astronomical event mirrors Inanna's ascent in the ancient myth, offering us a unique opportunity for spiritual transformation.
 
 ## Ceremony Details
 
 - **Date:** Sunday, March 23, 2025
-- **Time:** 8:00 PM - 10:00 PM
+- **Time:** 7:00 PM - 9:00 PM
 - **Location:** Private Residence (Address provided upon registration)
-- **Led by:** Priestess Moon
+- **Led by:** Priestess Kaia
 
 ## About the Venus Inferior Conjunction
 
-The inferior conjunction occurs when Venus passes between Earth and the Sun, appearing to descend into the underworld. This rare astronomical event holds deep spiritual significance in Inanna's mythology, representing:
+The inferior conjunction occurs when Venus passes between Earth and the Sun, appearing to descend into the underworld. This infrequent astronomical event holds deep spiritual significance in Inanna's mythology, representing:
 
 - Death and rebirth
 - Transformation and renewal
@@ -39,7 +39,7 @@ The inferior conjunction occurs when Venus passes between Earth and the Sun, app
 2. **Main Ritual** (8:30 - 9:30)
    - Reading from The Descent of Inanna
    - Guided meditation on personal transformation
-   - Group ritual honoring Venus's descent
+   - Group ritual taking of sacrament
    - Sharing circle
 
 3. **Closing Ceremony** (9:30 - 10:00)
@@ -53,17 +53,12 @@ The inferior conjunction occurs when Venus passes between Earth and the Sun, app
 - Comfortable clothing
 - Small offering for the altar (flowers, crystals, or fruits)
 - Water bottle
+- If you take HRT, please bring it for the group sacrament
 - Any personal items for the altar
-
-## Registration
-
-Registration is required for this intimate ceremony. Space is limited to ensure a meaningful experience for all participants. Please register through our Partiful page to receive the location details and additional information.
-
-Suggested donation: $20-40 sliding scale, but no one turned away for lack of funds.
 
 ## Important Notes
 
-- This ceremony will be held at a private residence
+- This ceremony will be held at a private residence (probably, depending on RSVP count)
 - Address and parking information will be provided after registration
 - Please arrive 15 minutes early to settle in
-- The ceremony will begin promptly at 8:00 PM
+- The ceremony will begin at 7:00 PM

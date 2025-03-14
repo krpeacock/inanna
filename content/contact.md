@@ -1,7 +1,24 @@
 +++
-title = "Contact Us"
+title = "Contact the Temple of Inanna"
+description = "Connect with our spiritual community. Reach out to learn more about ceremonies, membership, guidance, or visiting our temple. We welcome all seekers of divine wisdom."
 template = "page.html"
 date = 2025-03-03
+[extra]
+keywords = [
+    "contact Inanna temple",
+    "spiritual guidance",
+    "temple visits",
+    "join community",
+    "Inanna ceremonies",
+    "spiritual consultation",
+    "temple location",
+    "divine wisdom",
+    "spiritual support",
+    "community events"
+]
+og_type = "article"
+og_image = "/images/temple-contact.jpg"
+section = "contact"
 +++
 
 # Contact the Temple of Inanna

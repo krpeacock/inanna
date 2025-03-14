@@ -1,7 +1,24 @@
 +++
 title = "About the Church of Inanna"
+description = "Learn about our mission to honor and preserve the ancient wisdom of Inanna. Discover our practices, community offerings, and the divine aspects of the Mesopotamian Queen of Heaven and Earth."
 template = "page.html"
 date = 2025-03-14
+[extra]
+keywords = [
+    "about Inanna",
+    "Mesopotamian goddess",
+    "divine feminine power",
+    "spiritual community",
+    "ancient wisdom",
+    "sacred practices",
+    "temple ceremonies",
+    "goddess worship",
+    "Venus ceremonies",
+    "spiritual transformation"
+]
+og_type = "article"
+og_image = "/images/temple-interior.jpg"
+section = "about"
 +++
 
 # About the Church of Inanna
