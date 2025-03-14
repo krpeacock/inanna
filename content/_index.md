@@ -1,13 +1,12 @@
----
++++
 title = "Church of Inanna - Modern Mesopotamian Spirituality"
 description = "Discover the ancient wisdom of Inanna, the Mesopotamian goddess of love, war, and transformation. Join our inclusive spiritual community celebrating divine feminine power through ritual and practice."
 template = "index.html"
 paginate_by = 5
 sort_by = "date"
-extra:
-  home:
-  - - section: articles
-  keywords = [
+
+[extra]
+keywords = [
     "Inanna",
     "Mesopotamian goddess",
     "divine feminine",
@@ -18,10 +17,13 @@ extra:
     "Venus worship",
     "goddess traditions",
     "spiritual transformation"
-  ]
-  og_image = "/images/temple-background.jpg"
-  og_type = "website"
----
+]
+og_image = "/images/temple-background.jpg"
+og_type = "website"
+
+[extra.home]
+sections = ["articles"]
++++
 
 # Welcome to the Church of Inanna
 

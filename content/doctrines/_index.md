@@ -4,6 +4,7 @@ description = "Explore the ancient wisdom and sacred teachings of Inanna, the Me
 sort_by = "date"
 template = "section.html"
 page_template = "page.html"
+
 [extra]
 keywords = [
     "Inanna teachings",

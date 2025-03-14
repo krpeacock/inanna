@@ -4,6 +4,7 @@ description = "Explore our calendar of sacred ceremonies, celebrations, and comm
 sort_by = "date"
 template = "events.html"
 page_template = "event.html"
+
 [extra]
 keywords = [
     "Inanna ceremonies",

@@ -3,6 +3,7 @@ title = "About the Church of Inanna"
 description = "Learn about our mission to honor and preserve the ancient wisdom of Inanna. Discover our practices, community offerings, and the divine aspects of the Mesopotamian Queen of Heaven and Earth."
 template = "page.html"
 date = 2025-03-14
+
 [extra]
 keywords = [
     "about Inanna",
