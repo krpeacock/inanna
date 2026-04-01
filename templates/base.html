@@ -1,123 +1,160 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Church of Inanna{% endblock %}</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ get_url(path='css/style.css') | safe }}">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --inanna-blue: #1a237e;      /* Deep lapis lazuli blue */
-            --inanna-red: #8b1c3d;       /* Rich burgundy red */
-            --inanna-gold: #c17f59;      /* Warm gold/amber */
-            --inanna-dark: #2c1810;      /* Deep brown */
-            --inanna-light: #f8f5f2;     /* Light cream */
-        }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{% block title %}Church of Inanna{% endblock %}</title>
+        <!-- Bootstrap CSS -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <!-- Custom CSS -->
+        <link
+            rel="stylesheet"
+            href="{{ get_url(path='css/style.css') | safe }}"
+        />
+        <!-- Google Fonts -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            :root {
+                --inanna-blue: #1a237e; /* Deep lapis lazuli blue */
+                --inanna-red: #8b1c3d; /* Rich burgundy red */
+                --inanna-gold: #c17f59; /* Warm gold/amber */
+                --inanna-dark: #2c1810; /* Deep brown */
+                --inanna-light: #f8f5f2; /* Light cream */
+            }
 
-        .navbar {
-            background: var(--inanna-blue) !important;
-            border-bottom: 3px solid var(--inanna-gold);
-        }
+            .navbar {
+                background: var(--inanna-blue) !important;
+                border-bottom: 3px solid var(--inanna-gold);
+            }
 
-        .navbar-brand {
-            color: var(--inanna-gold) !important;
-            font-family: 'Cinzel', serif;
-        }
+            .navbar-brand {
+                color: var(--inanna-gold) !important;
+                font-family: "Cinzel", serif;
+            }
 
-        .nav-link {
-            color: var(--inanna-light) !important;
-            transition: color 0.3s;
-        }
+            .nav-link {
+                color: var(--inanna-light) !important;
+                transition: color 0.3s;
+            }
 
-        .nav-link:hover {
-            color: var(--inanna-gold) !important;
-        }
+            .nav-link:hover {
+                color: var(--inanna-gold) !important;
+            }
 
-        .btn-primary {
-            background-color: var(--inanna-blue);
-            border-color: var(--inanna-blue);
-        }
+            .btn-primary {
+                background-color: var(--inanna-blue);
+                border-color: var(--inanna-blue);
+            }
 
-        .btn-primary:hover {
-            background-color: var(--inanna-dark);
-            border-color: var(--inanna-dark);
-        }
+            .btn-primary:hover {
+                background-color: var(--inanna-dark);
+                border-color: var(--inanna-dark);
+            }
 
-        footer {
-            background: var(--inanna-blue) !important;
-            border-top: 3px solid var(--inanna-gold);
-            color: var(--inanna-light) !important;
-        }
+            footer {
+                background: var(--inanna-blue) !important;
+                border-top: 3px solid var(--inanna-gold);
+                color: var(--inanna-light) !important;
+            }
 
-        footer h5 {
-            color: var(--inanna-gold);
-            font-family: 'Cinzel', serif;
-        }
+            footer h5 {
+                color: var(--inanna-gold);
+                font-family: "Cinzel", serif;
+            }
 
-        a {
-            color: var(--inanna-red);
-        }
+            a {
+                color: var(--inanna-red);
+            }
 
-        a:hover {
-            color: var(--inanna-dark);
-        }
-    </style>
-    {% block extra_head %}{% endblock %}
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand" href="{{ config.base_url }}">Church of Inanna</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ config.base_url }}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ get_url(path='about') }}">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ get_url(path='doctrines') }}">Doctrines</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ get_url(path='events') }}">Events</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ get_url(path='contact') }}">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <main>
-        {% block content %}{% endblock %}
-    </main>
-
-    <footer class="py-4 mt-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h5>Church of Inanna</h5>
-                    <p>Dedicated to the worship and teachings of the ancient Mesopotamian goddess of love, war, and fertility.</p>
+            a:hover {
+                color: var(--inanna-dark);
+            }
+        </style>
+        {% block extra_head %}{% endblock %}
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="{{ config.base_url }}"
+                    >Church of Inanna</a
+                >
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ config.base_url }}"
+                                >Home</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                href="{{ get_url(path='about') }}"
+                                >About</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                href="{{ get_url(path='doctrines') }}"
+                                >Doctrines</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                href="{{ get_url(path='events') }}"
+                                >Events</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                href="{{ get_url(path='contact') }}"
+                                >Contact</a
+                            >
+                        </li>
+                    </ul>
                 </div>
-                <div class="col-md-6 text-md-end">
-                    <p>&copy; 2024 Church of Inanna. All rights reserved.</p>
+            </div>
+        </nav>
+
+        <main>{% block content %}{% endblock %}</main>
+
+        <footer class="py-4 mt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Church of Inanna</h5>
+                        <p>
+                            Living out the edicts of Justice and Love in a
+                            difficult world
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <p>
+                            &copy; 2024 Church of Inanna. All rights reserved.
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
 
-    <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    {% block extra_scripts %}{% endblock %}
-</body>
-</html> 
+        <!-- Bootstrap JS Bundle -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        {% block extra_scripts %}{% endblock %}
+    </body>
+</html>

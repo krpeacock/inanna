@@ -4,17 +4,17 @@ date = 2024-03-14
 description = "Exploring Inanna's ancient and modern relationship with gender diversity and transformation"
 +++
 
-One of Inanna's most profound aspects is her power to transform gender and transcend binary limitations. Historical records from ancient Sumer tell us that Inanna's priests included people of all genders, including:
+One of Inanna's notable aspects is her power to transform gender and transcend binary limitations. Historical records from ancient Sumer tell us that Inanna's priestesses included people of all genders, including:
 
-- The gala priests, who were assigned male at birth but embodied feminine spiritual energy
+- The gala priestesses, who were assigned male at birth but embodied feminine spiritual energy
 - The kurgarrū and assinnu, sacred people who transcended traditional gender roles
 - The kalû, who performed sacred laments in a feminine voice
 
-Inanna's power to "turn a man into a woman and a woman into a man" was celebrated as a divine gift, showing that gender transformation has been sacred for thousands of years. This is documented in numerous ancient texts, including the hymns of Enheduanna, the first named author in history and high priestess of Inanna.
+Inanna's power to "turn a man into a woman and a woman into a man" was enumerated among her ME, showing that gender transformation has been sacred for thousands of years. This is documented in numerous ancient texts, including the hymns of Enheduanna, the first named author in history and high priestess of Inanna.
 
 ## Historical Context
 
-The ancient Mesopotamian understanding of gender was far more nuanced than modern binary concepts. Inanna's temples were known to be spaces where:
+The ancient Mesopotamian understanding of gender was more nuanced than modern binary concepts. Inanna's temples were known to be spaces where:
 
 - Gender transformation was considered a divine blessing
 - Non-binary gender expressions were honored as sacred
@@ -61,13 +61,13 @@ Our commitment to gender diversity includes:
 
 ## Ancient Wisdom for Modern Times
 
-The ancient Sumerians understood what many are only now rediscovering: gender is a sacred spectrum, not a binary. Inanna's teachings show us that:
+The ancient Sumerians understood a truth that sadly many today refuse to acknowledge: gender is a sacred spectrum, not a binary. Inanna's teachings show us that:
 
 - Gender transformation is a divine gift
 - Non-binary identities are sacred
 - All gender expressions are valid
 - Personal truth is to be honored
-- Community support is essential
+- Identity exists in and through community
 
 ## Sacred Texts and References
 
@@ -91,4 +91,4 @@ While honoring these ancient traditions, we also recognize the need to apply the
 - Creating inclusive sacred spaces
 - Celebrating contemporary expressions of gender diversity
 
-Through these practices and principles, we continue Inanna's ancient tradition of sacred gender diversity and transformation, making these divine gifts accessible to all who seek them. 
+Through these practices and principles, we continue Inanna's ancient tradition of sacred gender diversity and transformation, making these divine gifts accessible to all who seek them.

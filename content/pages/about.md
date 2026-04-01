@@ -5,47 +5,34 @@ template = "page.html"
 
 # About the Church of Inanna
 
-The Church of Inanna is dedicated to honoring and preserving the ancient wisdom and traditions of the Mesopotamian goddess Inanna, Queen of Heaven and Earth. Our community celebrates the diverse aspects of divine feminine power through ritual, study, and spiritual practice.
+The Church of Inanna is a contemporary spiritual community inspired by Inanna, the ancient Mesopotamian Queen of Heaven and Earth. We are informed by the philosophies of humanism, draw on the meeting structures of Quakerism, and are guided by a shared commitment to Justice and Love.
 
-## Our Mission
+We do not require a strict creed or belief in a literal supernatural deity. What unites us is a set of values — and a recognition that ancient wisdom has something real to offer people navigating the world today.
 
-We strive to:
-- Preserve and share the ancient wisdom of Mesopotamian spirituality
-- Create a welcoming community for those seeking connection with Inanna
-- Promote understanding of divine feminine power in all its forms
-- Support personal transformation through spiritual practice
+## Who Inanna Is
 
-## The Goddess Inanna
+Inanna is one of the oldest documented goddesses in human history. She is the Queen of Heaven, whose chief virtues are political power, sensuality, and wisdom. She descended into the underworld and returned. She won the sacred powers of civilization — the ME — through her own wit and cunning, and used them not for domination, but to build and protect.
 
-Inanna, also known as Ishtar in later traditions, embodies the full spectrum of divine feminine power. She is:
+For us, Inanna is a mirror and a model. She embodies the full range of human experience without apology. In a world that often strips people of power, stigmatizes love, and treats human expression as something to be managed or contained, Inanna is a reminder that these things are sacred.
 
-- **Queen of Heaven and Earth**: Ruler of both celestial and terrestrial realms
-- **Goddess of Love and War**: Embracing both creation and destruction
-- **Lady of the Evening Star**: Guide through cycles of death and rebirth
-- **Guardian of the ME**: Keeper of divine powers and civilization
+## What We Believe
 
-## Our Practices
+Our practice is organized around three interconnected callings:
 
-Our spiritual practice incorporates:
+**Self Actualization** — To know yourself is the first step. Accept your mortality, your needs, your limits. Nourish your body. Rest. Seek pleasure and delight in what this world offers. Joy is not indulgence; it is necessary for survival. Before you can give to others, you must be grounded in yourself.
 
-- Regular ceremonies honoring the phases of Venus
-- Study of ancient Sumerian and Akkadian texts
-- Meditation and personal devotional practices
-- Community gatherings and celebrations
-- Sacred dance and music
-- Modern interpretations of ancient rituals
+**Community Actualization** — No person is an island. Your own flourishing depends on your community, and theirs depends on you. The deepest injustice in the world is structural: people denied the ability to meet their own needs through no fault of their own. To the extent we are able, it is right to uplift others and dismantle the barriers that stand in the way of their actualization. Power used well builds up; it does not dominate.
 
-## Join Our Community
+**Cultural Perpetuity** — Once a community finds its footing, the work turns toward posterity. What wisdom can we pass on? What beauty can we make? Art, music, storytelling, and craft enrich our lives and form the foundation of all culture. We honor and encourage the artists and artisans among us.
 
-Whether you're a dedicated practitioner or simply curious about Mesopotamian spirituality, we welcome you to join our community. We offer:
+## The Sacred Powers (ME)
 
-- Weekly study groups
-- Monthly ceremonies
-- Educational workshops
-- Community events
-- Personal guidance
-- Online resources
+Inanna is the guardian of the ME — the divine powers of civilization, from governance and justice to love, art, and transformation. We understand these not as mystical abstractions but as real capacities: the ability to lead, to create, to protect, to transform. They can be cultivated, shared, and taught. It is our duty and our privilege to do so.
 
-## Sacred Spaces
+[Read more about the ME and how to work with them.](/doctrines/sacred-powers/)
 
-Our temple provides a sacred space for worship, meditation, and community gathering. We maintain altars dedicated to different aspects of Inanna and create ritual spaces that honor the ancient traditions while meeting the needs of modern practitioners. 
+## Join Us
+
+We are a small community, and we are growing. We are looking for people who share these values — whether you come with a devotional practice already, a curiosity about Inanna and Mesopotamian tradition, or simply a desire to be part of a community that takes justice and mutual flourishing seriously.
+
+If any of this speaks to you, we'd love to hear from you.
